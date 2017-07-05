@@ -20,6 +20,7 @@ def load_compare_images():
     list_initial_recognition = []
     norm_l1 = 0
     np.set_printoptions(suppress=True)
+    #FILE PROBANDO
 
     file_initial = open(COMPARE_PATH_ONE, 'r')
     for linea in file_initial:
