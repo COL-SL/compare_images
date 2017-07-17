@@ -27,7 +27,7 @@ def covarianza():
 
 
     #for i in range(0, int(total_data)):
-    #    corrected = [value - media_pres  for value in (pres[int(i)])]
+    #   corrected = [value - media_pres  for value in (pres[int(i)])]
 
 
 
