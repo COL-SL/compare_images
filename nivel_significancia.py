@@ -35,6 +35,36 @@ def covarianza():
     print "muestra promedio paro:", value_resta_promedio_paro
     print "muestra promedio pres", value_resta_promedio_pres
 
+    cuadrado_value_resta_promedio_paro = value_resta_promedio_paro * value_resta_promedio_paro
+    cuadrado_value_resta_promedio_preso = value_resta_promedio_pres * value_resta_promedio_pres
+
+    print "cuadrado muestra promedio paro: ", cuadrado_value_resta_promedio_paro
+    print "cuadrado muestra promedio preso ", cuadrado_value_resta_promedio_preso
+
+    sum_paro = 0
+    for i in range(0, total_data):
+        sum_paro = sum_paro + cuadrado_value_resta_promedio_paro[i]
+
+    sum_preso = 0
+    for i in range(0, total_data):
+        sum_preso = sum_preso + cuadrado_value_resta_promedio_preso[i]
+
+    sum_sqrt_paro = mt.sqrt(sum_paro / (total_data - 1))
+    sum_sqrt_preso = mt.sqrt(sum_preso / (total_data - 1))
+
+    print "sum_sqrt_paro: ", sum_sqrt_paro
+    print "sum_sqrt_preso: ", sum_sqrt_preso
+
+
+    sd = mt.sqrt((desviacion_tipica_paro*desviacion_tipica_paro)/total_data + (desviacion_tipica_pres*desviacion_tipica_pres)/total_data)
+    print sd
+
+    t = (media_pres - media_paro) / sd
+
+    print "t: ", t
+
+    gl = (total_data + total_data) - 2
+    print "gl: ", gl
     '''
     value = value * value
 
@@ -46,15 +76,14 @@ def covarianza():
 
     print mt.sqrt(sum / total_data - 1)
 
-
-    #for i in range(0, int(total_data)):
-    #   corrected = [value - media_pres  for value in (pres[int(i)])]
-
-
+    
+    for i in range(0, int(total_data)):
+       corrected_promedio_paro = [value - media_pres  for value in (pres[int(i)])]
 
 
 
 
+    
     for i in range(0, 15):
         mean = np.average(Matrix[:, i])
         corrected = [value - mean for value in (Matrix[:, i])]
