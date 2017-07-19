@@ -5,9 +5,10 @@ from scipy.stats import levene, shapiro
 
 
 def covarianza():
-    paro = [22.1, 20.6, 18.6, 15.6, 13.9, 10.63, 11.61, 11.37, 10.53, 8.71, 8.26, 8.57, 13.79, 18.66, 20.11, 22.56, 25.77, 25.73, 23.70, 20.90]
-    pres_paro_menor_16 = [44.19, 45.10, 47.57, 51.88, 56.09, 59.37, 61.05, 64.02, 67.1]
-    pres_paro_mayor_16 = [41.90, 42.75, 44.37, 76.07, 73.92, 70.47, 68.59, 66.76, 65.01,61.61]
+    #datos desde 1996 hasta 2017. un total de 22 anios
+    paro = [22.1, 20.6, 18.6, 15.6, 13.9, 10.63, 11.61, 11.37, 10.53, 8.71, 8.26, 8.57, 13.79, 18.66, 20.11, 22.56, 25.77, 25.73, 23.70, 20.90, 18.91, 17.7]
+    pres_paro_menor_16 = [44.19, 45.10, 47.57, 51.88, 56.09, 59.37, 61.05, 64.02, 67.1, 73.55]
+    pres_paro_mayor_16 = [41.90, 42.75, 44.37, 76.07, 73.92, 70.47, 68.59, 66.76, 65.01,61.61, 59.589, 60.494]
     #paro = [13.9, 10.63, 11.61, 11.37, 10.53, 8.71, 8.26, 8.57, 13.79, 18.66, 20.11, 22.56, 25.77, 25.73, 23.70, 20.90]
     #pres = [44.19, 45.10, 47.57, 51.88, 56.09, 59.37, 61.05, 64.02, 67.1, 73.55, 76.07, 73.92, 70.47, 68.59, 66.76, 65.01, 61.61]
     #paro = [10.63, 11.61, 11.37, 10.53, 8.71, 8.26, 8.57, 13.79, 18.66, 20.11, 22.56, 25.77, 25.73, 23.70, 20.90]
@@ -23,8 +24,11 @@ def covarianza():
 
     #paro = [6, 4, 8, 9, 4, 8, 10, 9, 5, 6]
     #pres = [5, 5, 7, 5, 3, 8, 10, 8, 7, 6]
-    total_data_menor_16 = 9
-    total_data_mayor_16 = 10
+    total_data_menor_16 = 10
+    total_data_mayor_16 = 12
+
+    total_data_menor_16_1 = total_data_menor_16 -1
+    total_data_mayor_16_1 = total_data_mayor_16 - 1
 
     print '\n',"la media de tasa de paro: ", np.average(paro)
 
@@ -38,7 +42,8 @@ def covarianza():
     desviacion_tipica_paro_mayor_16 =  np.std(pres_paro_mayor_16)
     print "desviacion_tipica_paro_mayor_16: ", desviacion_tipica_paro_mayor_16,'\n'
 
-    t = (media_paro_menor_16 - media_paro_mayor_16) / mt.sqrt((desviacion_tipica_paro_menor_16/total_data_menor_16-1) + (desviacion_tipica_paro_mayor_16/total_data_mayor_16-1))
+    t = (media_paro_menor_16 - media_paro_mayor_16) / (mt.sqrt((desviacion_tipica_paro_menor_16/total_data_menor_16_1) + (desviacion_tipica_paro_mayor_16/total_data_mayor_16_1)))
+    #print (desviacion_tipica_paro_menor_16 / (total_data_menor_16 - 1))
 
     print "t de student:", abs(t)
 
